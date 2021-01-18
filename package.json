@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vasylytsya777/goit-js-hw-12-countries.git"
+    "url": "git+https://github.com/StanislavBedrii/goit-js-hw-13-image-finder"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Stanislav Bedrii <s0664060728@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/luxplanjay/webpack-starter-kit/issues"
   },
-  "homepage": "https://github.com/Vasylytsya777/goit-js-hw-12-countries",
+  "homepage": "https://github.com/StanislavBedrii/goit-js-hw-13-image-finder",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
