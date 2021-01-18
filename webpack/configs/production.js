@@ -4,6 +4,22 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = env => ({
   devtool: 'source-map',
+  output: {
+    filename: '[name].[contenthash].js',
+  },
+  optimization: {
+    moduleIds: 'hashed',
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
   module: {
     rules: [
       {
@@ -11,13 +27,11 @@ module.exports = env => ({
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/,
         use: [
-          // Creates `style` nodes from JS strings
-          'style-loader',
-          // Translates CSS into CommonJS
+          MiniCssExtractPlugin.loader,
           'css-loader',
-          // Compiles Sass to CSS
+          'postcss-loader',
           'sass-loader',
         ],
       },
@@ -36,8 +50,9 @@ module.exports = env => ({
       },
     }),
     new MiniCssExtractPlugin({
-      filename: 'styles.css',
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[name].[id].[contenthash].css',
     }),
-    new OptimizeCssAssetsPlugin(),
+    new OptimizeCssAssetsPlugin({}),
   ],
 });
